@@ -4,5 +4,6 @@ declare namespace NodeJS {
     PORT?: `${number}`;
     DATABASE_URL?: string;
     COOKIE_SECRET?: string;
+    LOG_LEVEL?: string;
   }
 }
