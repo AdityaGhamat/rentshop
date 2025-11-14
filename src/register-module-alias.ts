@@ -10,7 +10,7 @@ const isProduction = env.NODE_ENV === "production";
 const target = isProduction ? path.join(root, "dist") : path.join(root, "src");
 
 moduleAlias.addAlias("@", target);
-moduleAlias.addAlias("@users", path.join(target, "modules/users"));
-moduleAlias.addAlias("@products", path.join(target, "modules/products"));
+moduleAlias.addAlias("@user", path.join(target, "modules/user"));
+moduleAlias.addAlias("@product", path.join(target, "modules/product"));
 moduleAlias.addAlias("@core", path.join(target, "modules/core"));
 moduleAlias.addAlias("@utils", path.join(target, "modules/core/utility"));

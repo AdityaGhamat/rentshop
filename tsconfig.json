@@ -12,10 +12,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@users/*": ["src/modules/users/*"],
-      "@products/*": ["src/modules/products/*"],
-      "@core/*": ["src/modules/core/*"],
-      "@utils/*": ["src/modules/core/utility/*"]
+      "@user": ["src/modules/user/index.ts"],
+      "@user/*": ["src/modules/user/*"],
+      "@product": ["src/modules/product/index.ts"],
+      "@product/*": ["src/modules/product/*"],
+      "@core/*": ["src/modules/core/*"]
     }
   },
   "include": ["src"]
