@@ -14,3 +14,4 @@ moduleAlias.addAlias("@user", path.join(target, "modules/user"));
 moduleAlias.addAlias("@product", path.join(target, "modules/product"));
 moduleAlias.addAlias("@core", path.join(target, "modules/core"));
 moduleAlias.addAlias("@utils", path.join(target, "modules/core/utility"));
+moduleAlias.addAlias("@auth", path.join(target, "modules/auth"));

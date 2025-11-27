@@ -78,6 +78,10 @@ const UserSchema = new Schema<IUser>(
       type: Boolean,
       default: false,
     },
+    userAgent: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,

@@ -18,7 +18,11 @@ export interface IBaseRepositoryInterface<T, K> {
     options?: Record<string, unknown>
   ): Promise<T | null>;
   findByIdAndDelete(id: string): Promise<boolean>;
-
+  updateOne(
+    args: Partial<K>,
+    data: Partial<T>,
+    options: Record<string, unknown>
+  ): Promise<boolean>;
   updateMany(
     args: Partial<K>,
     data: Partial<T>,

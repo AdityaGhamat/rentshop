@@ -9,6 +9,7 @@ export interface IUser extends Document {
   googleId?: string;
   role: "user" | "admin";
   addresses: IAddress[];
+  userAgent:string,
   defaultAddress?: any;
   isEmailVerified: boolean;
   isPhoneVerified: boolean;

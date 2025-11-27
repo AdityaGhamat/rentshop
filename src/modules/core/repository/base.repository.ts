@@ -1,4 +1,10 @@
-import { Model, FilterQuery, Types, PipelineStage } from "mongoose";
+import {
+  Model,
+  FilterQuery,
+  Types,
+  PipelineStage,
+  UpdateWriteOpResult,
+} from "mongoose";
 import type { IBaseRepositoryInterface } from "@core/repository";
 import type { ModelDoc } from "@core/repository";
 
@@ -89,6 +95,17 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
       .findByIdAndUpdate(id, { isDeleted: true, deletedAt: new Date() } as any)
       .exec();
     return !!r;
+  }
+  async updateOne(
+    args: Partial<K>,
+    data: Partial<T>,
+    options?: Record<string, unknown>
+  ): Promise<boolean> {
+    const filter = this.buildFilter(args);
+    const result = (await this.model.updateOne(filter, data as any, {
+      ...options,
+    })) as unknown as UpdateWriteOpResult;
+    return result.modifiedCount > 0;
   }
 
   async updateMany(

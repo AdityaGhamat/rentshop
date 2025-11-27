@@ -16,7 +16,9 @@
       "@user/*": ["src/modules/user/*"],
       "@product": ["src/modules/product/index.ts"],
       "@product/*": ["src/modules/product/*"],
-      "@core/*": ["src/modules/core/*"]
+      "@core/*": ["src/modules/core/*"],
+      "@auth": ["src/modules/auth/index.ts"],
+      "@auth/*": ["src/modules/auth/*"]
     }
   },
   "include": ["src"]
