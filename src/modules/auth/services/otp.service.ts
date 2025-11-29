@@ -19,7 +19,7 @@ class OtpService {
   public async sendOtp(
     phone: string,
     purpose: OtpPurpose,
-    userId: any
+    userId?: any
   ): Promise<void> {
     const code = this.generateOtp(env.OTP_LENGTH);
     const hash = await argon2.hash(code);
