@@ -12,5 +12,7 @@ const envSchema = z.object({
   JWT_REFRESH_TOKEN_TTL: z.coerce.number().int(),
   JWT_TOKEN_AUDIENCE: z.string().default("localhost:3000"),
   JWT_TOKEN_ISSUER: z.string().default("localhost:3000"),
+  OTP_TTL_MS: z.coerce.number().int().default(300000),
+  OTP_LENGTH: z.coerce.number().int().default(6),
 });
 export const env = envSchema.parse(process.env);

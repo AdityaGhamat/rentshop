@@ -60,6 +60,7 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
     const filter = this.buildFilter(args);
     const q = this.model.findOne(filter);
     if (options.select) q.select(options.select);
+    if (options.sort) q.sort(options.sort);
     return (await q.exec())?.toObject() as T | null;
   }
 
