@@ -1,4 +1,4 @@
-import { type VerifyPhoneOtpAndCompleteRegisterType } from "@/modules/auth/dto/auto.dto";
+import { type VerifyPhoneOtpAndCompleteRegisterType } from "@/modules/auth/dto/auth.dto";
 import otpService from "../../otp.service";
 import { BadRequestError } from "@/modules/core/errors";
 import userRepository from "@/modules/user/repository/user.repository";

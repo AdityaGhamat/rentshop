@@ -22,7 +22,7 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
     return doc.toObject() as T;
   }
 
-  buildFilter(args?: Partial<K>): FilterQuery<ModelDoc<T>> {
+  buildFilter(args?: FilterQuery<K>): FilterQuery<ModelDoc<T>> {
     const filter: FilterQuery<ModelDoc<T>> = {};
     if (!args) return filter;
     Object.entries(args as Record<string, any>).forEach(([k, v]) => {
@@ -38,7 +38,7 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
   }
 
   async find(
-    args: Partial<K> = {},
+    args: FilterQuery<K> = {},
     options: Record<string, any> = {}
   ): Promise<T[]> {
     const filter = this.buildFilter(args);
@@ -54,7 +54,7 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
   }
 
   async findOne(
-    args: Partial<K>,
+    args: FilterQuery<K>,
     options: Record<string, any> = {}
   ): Promise<T | null> {
     const filter = this.buildFilter(args);
@@ -98,7 +98,7 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
     return !!r;
   }
   async updateOne(
-    args: Partial<K>,
+    args: FilterQuery<K>,
     data: Partial<T>,
     options?: Record<string, unknown>
   ): Promise<boolean> {
@@ -110,7 +110,7 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
   }
 
   async updateMany(
-    args: Partial<K>,
+    args: FilterQuery<K>,
     data: Partial<T>,
     options: Record<string, any> = {}
   ): Promise<number> {
@@ -122,7 +122,7 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
   }
 
   async deleteMany(
-    args: Partial<K>,
+    args: FilterQuery<K>,
     options: Record<string, any> = {}
   ): Promise<number> {
     const filter = this.buildFilter(args);
@@ -136,12 +136,12 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
     return res.modifiedCount ?? 0;
   }
 
-  async count(args: Partial<K> = {}): Promise<number> {
+  async count(args: FilterQuery<K> = {}): Promise<number> {
     const filter = this.buildFilter(args);
     return this.model.countDocuments(filter).exec();
   }
 
-  async exists(args: Partial<K>): Promise<boolean> {
+  async exists(args: FilterQuery<K>): Promise<boolean> {
     const filter = this.buildFilter(args);
     const res = await this.model.exists(filter);
     return !!res;
@@ -156,7 +156,7 @@ export class BaseRepository<T extends { _id: any }, K = Partial<T>>
   }
 
   async paginate(
-    args: Partial<K> = {},
+    args: FilterQuery<K> = {},
     options: { page: number; limit: number } = { page: 1, limit: 20 }
   ) {
     const { page = 1, limit = 20 } = options;

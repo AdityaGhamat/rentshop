@@ -21,6 +21,22 @@ class OtpService {
     purpose: OtpPurpose,
     userId?: any
   ): Promise<void> {
+    const existingOtp = await otpcodeRepository.findOne({
+      phone,
+      purpose,
+      consumed: false,
+      expiresAt: { $gt: new Date() },
+    });
+
+    // If an OTP was sent less than 1 minute ago, block request
+    if (existingOtp) {
+      const timeDiff = existingOtp.createdAt.getTime() + 60000; // 1 min buffer
+      if (Date.now() < timeDiff) {
+        throw new ForbiddenError(
+          "Please wait 1 minute before requesting another OTP"
+        );
+      }
+    }
     const code = this.generateOtp(env.OTP_LENGTH);
     const hash = await argon2.hash(code);
 

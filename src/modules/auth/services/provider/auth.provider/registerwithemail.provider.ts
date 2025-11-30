@@ -1,9 +1,6 @@
 import { ConflictError } from "@/modules/core/errors";
 import userRepository from "@/modules/user/repository/user.repository";
-import {
-  RegisterWithEmailDto,
-  type RegisterWithEmailtype,
-} from "@/modules/auth/dto/auto.dto";
+import { type RegisterWithEmailtype } from "@/modules/auth/dto/auth.dto";
 class RegisterWithEmailProvider {
   constructor() {}
   async registerWithEmail(registerWithEmailDto: RegisterWithEmailtype) {

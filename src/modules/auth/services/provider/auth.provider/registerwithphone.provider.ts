@@ -1,7 +1,7 @@
 import {
   RegisterWithEmailtype,
   registerWithPhoneType,
-} from "@/modules/auth/dto/auto.dto";
+} from "@/modules/auth/dto/auth.dto";
 import userRepository from "@/modules/user/repository/user.repository";
 import otpService from "../../otp.service";
 import { ConflictError } from "@/modules/core/errors";

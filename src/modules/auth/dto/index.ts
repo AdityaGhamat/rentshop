@@ -1,1 +1,1 @@
-export * from "./auto.dto";
+export * from "./auth.dto";

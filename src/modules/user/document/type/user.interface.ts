@@ -9,7 +9,7 @@ export interface IUser extends Document {
   googleId?: string;
   role: "user" | "admin";
   addresses: IAddress[];
-  userAgent:string,
+  userAgent: string;
   defaultAddress?: any;
   isEmailVerified: boolean;
   isPhoneVerified: boolean;
@@ -23,4 +23,5 @@ export interface IUser extends Document {
   createdAt: Date;
   updatedAt: Date;
   isLocked: boolean;
+  comparePassword(plain: string): Promise<boolean>;
 }
