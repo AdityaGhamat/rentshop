@@ -31,13 +31,13 @@ export interface IProduct extends Document {
 
   // For rent:
   isRentable: boolean;
-  rentPricePerDay?: number;
-  depositAmount?: number;
+  rentPricePerDay: number;
+  depositAmount: number;
 
-  rentAvailability?: boolean;
-  currentRenter?: string | null;
-  rentedTill?: Date | null;
-  totalStockForRent?: number;
+  rentAvailability: boolean;
+  currentRenter: Types.ObjectId | null;
+  rentedTill: Date | null;
+  totalStockForRent: number;
 
   createdAt?: Date;
   updatedAt?: Date;
