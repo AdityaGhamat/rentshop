@@ -78,7 +78,7 @@ export class ProductService {
 
 
 
-    
+
 
     // static async getProductByUID(uid: string) {
     //     const product = await Product.findOne({ uid })
@@ -95,26 +95,26 @@ export class ProductService {
     /** -------------------------------
      *  LIST PRODUCTS WITH FILTERS
      * -------------------------------- */
-    static async listProducts(filters: any = {}, page = 1, limit = 20) {
-        const query: any = {};
+    // static async listProducts(filters: any = {}, page = 1, limit = 20) {
+    //     const query: any = {};
 
-        if (filters.category) query["description.category"] = filters.category;
-        if (filters.brand) query["description.brand"] = filters.brand;
-        if (filters.search) query.title = { $regex: filters.search, $options: "i" };
+    //     if (filters.category) query["description.category"] = filters.category;
+    //     if (filters.brand) query["description.brand"] = filters.brand;
+    //     if (filters.search) query.title = { $regex: filters.search, $options: "i" };
 
-        if (filters.minPrice || filters.maxPrice) {
-            query.discountedPrice = {};
-            if (filters.minPrice) query.discountedPrice.$gte = filters.minPrice;
-            if (filters.maxPrice) query.discountedPrice.$lte = filters.maxPrice;
-        }
+    //     if (filters.minPrice || filters.maxPrice) {
+    //         query.discountedPrice = {};
+    //         if (filters.minPrice) query.discountedPrice.$gte = filters.minPrice;
+    //         if (filters.maxPrice) query.discountedPrice.$lte = filters.maxPrice;
+    //     }
 
-        if (filters.onlyRentable) query.isRentable = true;
+    //     if (filters.onlyRentable) query.isRentable = true;
 
-        return Product.find(query)
-            .skip((page - 1) * limit)
-            .limit(limit)
-            .sort({ createdAt: -1 });
-    }
+    //     return Product.find(query)
+    //         .skip((page - 1) * limit)
+    //         .limit(limit)
+    //         .sort({ createdAt: -1 });
+    // }
 
     /** -------------------------------
      *  UPDATE PRODUCT
