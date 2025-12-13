@@ -1,22 +1,23 @@
 import { Product } from "../../../document/product.document";
 
 
-class DecreaseSaleStockProvider {
-    static async decreaseSaleStock(id: string, amount: number) {
+class DecreaseRentStockProvider {
+
+    static async decreaseRentStock(id: string, amount: number) {
         if (amount <= 0) throw new Error("Amount must be positive");
 
         const product = await Product.findOneAndUpdate(
             {
                 _id: id,
-                stockForSale: { $gte: amount },
+                totalStockForRent: { $gte: amount },
                 isDeleted: false
             },
-            { $inc: { stockForSale: -amount } },
+            { $inc: { totalStockForRent: -amount } },
             { new: true }
         );
 
         if (!product) {
-            throw new Error("Insufficient stock or product not found");
+            throw new Error("Insufficient rent stock or product not found");
         }
 
         return product;
@@ -24,4 +25,4 @@ class DecreaseSaleStockProvider {
 
 }
 
-export default new DecreaseSaleStockProvider();
+export default new DecreaseRentStockProvider();

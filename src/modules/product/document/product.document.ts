@@ -12,18 +12,20 @@ const ProductDescriptionSchema = new Schema<IProductDescription>({
 
 const ProductSchema = new Schema<IProduct>(
   {
-      uid: {
-    type: String,
-    default: () => nanoid(12),
-    unique: true,
-    index: true,
-    immutable: true,
-  },
+    uid: {
+      type: String,
+      default: () => nanoid(12),
+      unique: true,
+      index: true,
+      immutable: true,
+    },
     title: { type: String, required: true },
 
     images: [{ type: String, required: true }],
 
     description: { type: ProductDescriptionSchema, required: true },
+    isDeleted: { type: Boolean, default: false },
+
 
     size: { type: String, required: true },
     color: { type: String, required: true },

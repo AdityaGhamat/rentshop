@@ -1,3 +1,19 @@
 import { Product } from "../../../document/product.document";
-import { IProduct, IProductDescription } from "@product";
-import mongoose from "mongoose";
+
+class increaseRentStockProvider {
+    static async increaseRentStock(id: string, amount: number) {
+        if (amount <= 0) throw new Error("Amount must be positive");
+
+        const product = await Product.findOneAndUpdate(
+            { _id: id, isDeleted: false },
+            { $inc: { totalStockForRent: amount } },
+            { new: true }
+        );
+
+        if (!product) throw new Error("Product not found");
+        return product;
+    }
+
+}
+
+export default new increaseRentStockProvider();

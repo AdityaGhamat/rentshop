@@ -15,6 +15,7 @@ export interface IProduct extends Document {
   images: string[];
 
   description: IProductDescription;
+  isDeleted: boolean;
 
   size: string;
   color: string;
