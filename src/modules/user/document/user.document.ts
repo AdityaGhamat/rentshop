@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import { IUser } from "@user";
 import { nanoid } from "nanoid";
 import argon2 from "argon2";
-import { userRoles } from "@user";
+import { userRoles } from "./type/enum/user.role.enum";
 
 const UserSchema = new Schema<IUser>(
   {
@@ -34,7 +34,8 @@ const UserSchema = new Schema<IUser>(
       required: false,
     },
     role: {
-      enum: userRoles,
+      type: String,
+      enum: Object.values(userRoles),
       required: false,
     },
     addresses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Address" }],
